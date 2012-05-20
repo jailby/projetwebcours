@@ -1,19 +1,15 @@
 <?php
 
+include("connexion.php");
 include("accueil.php");
 include("login.php");
 include("artiste.php");
 include("album.php");
 include("recherche.php");
 
-$utilisateurDB = "jbsubils"; 
-$utilisateurDB = "sbrunerie";
-$racine = "http://localhost/~sbrunerie/ArchiWeb/projetwebcours/index.php";
-/*
-$c = mysql_connect("venus",$utilisateurDB,$utilisateurDB) or die("Erreur connect");
-mysql_select_db($utilisateurDB,$c) or die ("Erreur select_db");
-mysql_set_charset("utf8",$c) or die ("Erreur set_charset utf8");
-*/
+connexion();
+
+$racine = 'http://localhost/~sbrunerie/ArchiWeb/projetwebcours/index.php';
 
 function echoErreurP()
 {
@@ -31,15 +27,28 @@ function echoErreurP()
 	}
 }
 
+function getSelectedP($param)
+{
+	if(isset($_GET["p"]) && $_GET["p"] == $param)
+	{
+		return ' class="selected"';
+	}
+	else
+	{
+		return '';
+	}
+}
+
 function echoAll()
 {
+	global $racine;
 	echo '
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<link type="text/css" href="style.css" rel="stylesheet" />
-		<!--<script type="text/javascript" src="wait.js"></script>-->
+		<script type="text/javascript" src="script.js"></script>
 		<title>Titre !</title>
 	</head>
 	<body>
@@ -47,17 +56,17 @@ function echoAll()
 			<div id="entete">
 				<div id="logo">
 					<a href="'.$racine.'">
-						<h1> Catalogue d\'albums de musiques </h1>
+						<h1> Catalogue d’albums de musiques </h1>
 						<!--<img src="img/logo.jpg" alt="Logo avec lien sur page d’accueil" />-->
 					</a>
 				</div>
 				<div id="divMenu">
 					<ul id="menu">
-						<li><a href="?p=accueil">Accueil</a></li>
-						<li><a href="?p=artiste&amp;idArtiste=0">Artistes</a></li>
-						<li><a href="?p=album&amp;idAlbum=0">Albums</a></li>
-						<li><a href="?p=login">Connexion</a></li>
-						<li><a href="?p=recherche">Recherche</a></li>
+						<li><a href="?p=accueil"'.getSelectedP("accueil").'>Accueil</a></li>
+						<li><a href="?p=artiste"'.getSelectedP("artiste").'>Artistes</a></li> <!-- &amp;idArtiste=0 -->
+						<li><a href="?p=album"'.getSelectedP("album").'>Albums</a></li> <!-- &amp;idAlbum=0 -->
+						<li><a href="?p=login"'.getSelectedP("login").'>Connexion</a></li>
+						<li><a href="?p=recherche"'.getSelectedP("recherche").'>Recherche</a></li>
 					</ul>
 				</div>
 			</div>
@@ -108,4 +117,6 @@ function echoAll()
 }
 
 echoAll();
+close();
+
 ?>
