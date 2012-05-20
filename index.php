@@ -8,7 +8,7 @@ include("recherche.php");
 
 $utilisateurDB = "jbsubils"; 
 $utilisateurDB = "sbrunerie";
-$racine = "http://localhost/~sbrunerie/ArchiWeb/Projet/";
+$racine = "http://localhost/~sbrunerie/ArchiWeb/projetwebcours/index.php";
 /*
 $c = mysql_connect("venus",$utilisateurDB,$utilisateurDB) or die("Erreur connect");
 mysql_select_db($utilisateurDB,$c) or die ("Erreur select_db");
@@ -46,8 +46,10 @@ function echoAll()
 		<div id="main">
 			<div id="entete">
 				<div id="logo">
-					<h1> Catalogue d\'albums de musiques </h1>
-					<a href="$racine"><!--<img src="img/logo.jpg" alt="Logo avec lien sur page d’accueil" />--></a>
+					<a href="'.$racine.'">
+						<h1> Catalogue d\'albums de musiques </h1>
+						<!--<img src="img/logo.jpg" alt="Logo avec lien sur page d’accueil" />-->
+					</a>
 				</div>
 				<div id="divMenu">
 					<ul id="menu">
@@ -94,6 +96,7 @@ function echoAll()
 	echo '
 			<div id="footer">
 				<span>© Sylvain Brunerie, Jean-Baptiste Subils</span>
+				<a href="?p=licence">Informations de licence</a>
 				<a href="?p=mentions">Mentions légales</a>
 			</div>			
 		</div>
