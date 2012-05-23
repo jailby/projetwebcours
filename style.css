@@ -75,7 +75,7 @@ a:hover
 }
 #menu li a:hover
 {
-	border-radius: 20px 0;
+	border-radius: 0 0 20px 0;
 }
 
 

@@ -12,8 +12,6 @@ include("recherche.php");
 
 connexion();
 
-$racine = 'http://localhost/~sbrunerie/ArchiWeb/projetwebcours/';
-
 function echoErreurP()
 {
 	if(isset($_GET["p"]))
