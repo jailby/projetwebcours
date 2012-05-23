@@ -26,7 +26,7 @@ function connexion()
 		{
 			$utilisateurDB = "root";
 		
-			$c = mysql_connect("localhost", $utilisateurDB, $utilisateurDB) or die("Erreur connect : ".mysql_error());
+			$c = mysql_connect("localhost", $utilisateurDB, '') or die("Erreur connect : ".mysql_error());
 			mysql_select_db("glin607",$c) or die ("Erreur select_db : ".mysql_error());
 			
 			$racine = 'http://localhost/~sbrunerie/ArchiWeb/projetwebcours/';
