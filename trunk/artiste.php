@@ -11,6 +11,7 @@ function echoArtiste()
 		$nomArtiste = "Artiste bidon";
 	
 		echo '
+				<a class="lienTous" href="?p=artiste">« Tous les artistes</a>
 				<h2 id="nomArtiste">Artiste : '.$nomArtiste.'</h2>
 				<p>Désolé, pas plus d’informations pour l’instant.</p>
 			</div>';

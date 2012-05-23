@@ -10,6 +10,11 @@ h1
 	color: #070;
 }
 
+h2
+{
+	margin-top: 0;
+}
+
 a
 {
 	text-decoration: none;
@@ -68,6 +73,10 @@ a:hover
 	text-decoration: none;
 	color: gray;
 }
+#menu li a:hover
+{
+	border-bottom-right-radius: 15px;
+}
 
 
 /* Footer */
@@ -100,4 +109,21 @@ a:hover
 .pseudoListe
 {
 	font-size: small;
+}
+
+.lienTous
+{
+	font-size: small;
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+.cArtiste h2
+{
+	color: red;
+}
+
+.cAlbum h2
+{
+	color: green;
 }
