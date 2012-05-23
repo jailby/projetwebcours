@@ -1,5 +1,8 @@
 <?php
 
+ob_start("ob_gzhandler");
+session_start();
+
 include("connexion.php");
 include("accueil.php");
 include("login.php");
@@ -9,7 +12,7 @@ include("recherche.php");
 
 connexion();
 
-$racine = 'http://localhost/~sbrunerie/ArchiWeb/projetwebcours/index.php';
+$racine = 'http://localhost/~sbrunerie/ArchiWeb/projetwebcours/';
 
 function echoErreurP()
 {
@@ -18,8 +21,7 @@ function echoErreurP()
 		echo '
 			<div id="contenu" class="cErreurP">
 				<p>Désolé, le paramètre «&nbsp;'.$_GET["p"].'&nbsp;» n’a pas été reconnu.</p>
-			</div>
-				';
+			</div>';
 	}
 	else
 	{
@@ -42,11 +44,13 @@ function getSelectedP($param)
 function echoAll()
 {
 	global $racine;
+	
 	echo '
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<base href="'.$racine.'" />
 		<link type="text/css" href="style.css" rel="stylesheet" />
 		<script type="text/javascript" src="script.js"></script>
 		<title>Titre !</title>

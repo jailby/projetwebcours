@@ -11,7 +11,7 @@ function echoArtiste()
 		$nomArtiste = "Artiste bidon";
 	
 		echo '
-				<a class="lienTous" href="?p=artiste">« Tous les artistes</a>
+				<a class="lienTous" href="artiste">« Tous les artistes</a>
 				<h2 id="nomArtiste">Artiste : '.$nomArtiste.'</h2>
 				<p>Désolé, pas plus d’informations pour l’instant.</p>
 			</div>';
@@ -30,7 +30,8 @@ function echoArtiste()
 		{
 			echo '
 					<li>
-						<a href="?p=artiste&amp;idArtiste='.$ligneArtiste["IdArtiste"].'">
+						<!--<a href="?p=artiste&amp;idArtiste='.$ligneArtiste["IdArtiste"].'">-->
+						<a href="artiste/'.$ligneArtiste["IdArtiste"].'">
 							'.$ligneArtiste["NomArtiste"].' <span class="pseudoListe">('.$ligneArtiste["PseudoArtiste"].')</span>
 						</a>
 					</li>';

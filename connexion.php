@@ -10,7 +10,7 @@ function connexion()
 	//     base de données : glin607
 	// Faudra donc que tu fasses pareil (ou du moins qu’on utilise les mêmes identifiants sur nos deux ordis).
 	
-	// echo "<pre>"; var_dump($_SERVER); echo "</pre>";
+	//echo "<pre>"; var_dump($_SERVER); echo "</pre>";
 	
 	if($_SERVER["HTTP_HOST"] == "localhost")
 	{
@@ -22,18 +22,32 @@ function connexion()
 			$c = mysql_connect("venus", $utilisateurDB, $utilisateurDB) or die("Erreur connect : ".mysql_error());
 			mysql_select_db("$utilisateurDB",$c) or die ("Erreur select_db : ".mysql_error());
 		}
-		else // on est en local
+		elseif(strpos($_SERVER["SERVER_SOFTWARE"], "Unix") !== false) // on est en local sous Unix (Sylvain)
 		{
 			$utilisateurDB = "root";
 		
 			$c = mysql_connect("localhost", $utilisateurDB, $utilisateurDB) or die("Erreur connect : ".mysql_error());
 			mysql_select_db("glin607",$c) or die ("Erreur select_db : ".mysql_error());
+			
+			$racine = 'http://localhost/~sbrunerie/ArchiWeb/projetwebcours/';
 		}
-	}
+		else // on est en local sous Windows (JB)
+		{
+			$utilisateurDB = "root";
+		
+			$c = mysql_connect("localhost", $utilisateurDB, "") or die("Erreur connect : ".mysql_error());
+			mysql_select_db("glin607",$c) or die ("Erreur select_db : ".mysql_error());
+		
+			$racine = 'http://localhost/projetwebcours/';
+		}
+		
+	}	
 	elseif($_SERVER["HTTP_HOST"] == "innsbay.toile-libre.org")
 	{
 		$c = mysql_connect("sql.toile-libre.org", "innsbay_projweb", "GLIN607") or die("Erreur connect : ".mysql_error());
 		mysql_select_db("innsbay_projweb",$c) or die ("Erreur select_db : ".mysql_error());
+
+		$racine = 'http://innsbay.toile-libre.org/projetwebcours/';
 	}
 	else
 	{
@@ -45,9 +59,9 @@ function connexion()
 
 function close()
 {
-	#global $c;
+	global $c;
 	mysql_close($c);
-	echo mysql_errno();
+	//echo mysql_errno();
 }
 
 ?>
