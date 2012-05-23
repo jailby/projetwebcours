@@ -75,7 +75,7 @@ a:hover
 }
 #menu li a:hover
 {
-	border-bottom-right-radius: 15px;
+	border-radius: 20px 0;
 }
 
 
@@ -118,6 +118,7 @@ a:hover
 	margin-bottom: 0.5em;
 }
 
+/*
 .cArtiste h2
 {
 	color: red;
@@ -126,4 +127,4 @@ a:hover
 .cAlbum h2
 {
 	color: green;
-}
+}*/
