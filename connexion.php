@@ -2,17 +2,11 @@
 
 function connexion()
 {
-	global $c;	
-	
-	// Sur mon ordi j’ai configuré MySQL comme ça :
-	//     login : root
-	//     password : root
-	//     base de données : glin607
-	// Faudra donc que tu fasses pareil (ou du moins qu’on utilise les mêmes identifiants sur nos deux ordis).
-	
+	global $c, $racine;
+
 	//echo "<pre>"; var_dump($_SERVER); echo "</pre>";
 	
-	if($_SERVER["HTTP_HOST"] == "localhost")
+	if($_SERVER["HTTP_HOST"] == "localhost" || $_SERVER["HTTP_HOST"] == "127.0.0.1")
 	{
 		if(strpos($_SERVER["SERVER_SOFTWARE"], "CentOS") !== false) 
 		// on est à la fac, serveur SQL « Venus »
@@ -21,6 +15,8 @@ function connexion()
 		
 			$c = mysql_connect("venus", $utilisateurDB, $utilisateurDB) or die("Erreur connect : ".mysql_error());
 			mysql_select_db("$utilisateurDB",$c) or die ("Erreur select_db : ".mysql_error());
+			
+			$racine = 'http://localhost/projetwebcours/';
 		}
 		elseif(strpos($_SERVER["SERVER_SOFTWARE"], "Unix") !== false) // on est en local sous Unix (Sylvain)
 		{

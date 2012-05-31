@@ -11,8 +11,7 @@ function echoAlbum()
 	
 		echo '
 				<h2 id="nomAlbum">Album : '.$nomAlbum.'</h2>
-				<p>Désolé, pas plus d’informations pour l’instant.</p>
-			</div>';
+				<p>Désolé, pas plus d’informations pour l’instant.</p>';
 	}
 	else
 	{
