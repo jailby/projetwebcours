@@ -1,21 +1,5 @@
 <?php
 
-function spanPseudoArtiste($pseudoArtiste, $classe)
-{
-	if(!isset($classe))
-	{
-		$classe = "pseudo";
-	}
-	if($pseudoArtiste)
-	{
-		return ' <span class="pseudoTitre">('.$pseudoArtiste.')</span>';
-	}
-	else
-	{
-		return '';
-	}
-}
-
 function echoArtiste()
 {
 	echo '
@@ -79,4 +63,21 @@ function echoArtiste()
 				
 	}
 }
+
+function spanPseudoArtiste($pseudoArtiste, $classe)
+{
+	if(!isset($classe))
+	{
+		$classe = "pseudo";
+	}
+	if($pseudoArtiste)
+	{
+		return ' <span class="pseudoTitre">('.$pseudoArtiste.')</span>';
+	}
+	else
+	{
+		return '';
+	}
+}
+
 ?>
