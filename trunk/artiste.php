@@ -25,14 +25,14 @@ function echoArtiste()
 		$reqAlbumsArtiste = mysql_query("SELECT albums.IdAlbum, albums.NomAlbum FROM albums JOIN artistesalbums ON albums.IdAlbum = artistesalbums.IdAlbum WHERE IdArtiste = ".$artisteSelect["IdArtiste"]) or die ("Erreur requête albums artiste");
 		echo '
 				<p>Liste des albums de cet artiste :</p>
-					<ul class="listeAlbumsArtiste">';
+				<ul class="listeAlbumsArtiste">';
 		while ($ligneAlbum = mysql_fetch_assoc($reqAlbumsArtiste))
 		{
 			echo '
-						<li><a href="album/'.$ligneAlbum["IdAlbum"].'">'.$ligneAlbum["NomAlbum"].'</a></li>';
+					<li><a href="album/'.$ligneAlbum["IdAlbum"].'">'.$ligneAlbum["NomAlbum"].'</a></li>';
 		}
 		echo '
-					</ul>';
+				</ul>';
 					
 		echo '
 			</div>';
