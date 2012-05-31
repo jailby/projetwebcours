@@ -15,7 +15,7 @@ connexion();
 
 function getSelectedP($param)
 {
-	if(isset($_GET["p"]) && $_GET["p"] == $param)
+	if(isset($_REQUEST["p"]) && $_REQUEST["p"] == $param)
 	{
 		return ' class="selected"';
 	}
@@ -42,6 +42,7 @@ function echoAll()
 	<body>
 		<div id="main">
 			<div id="entete">
+				<div id="statut">'.loginStatut().'</div>
 				<div id="logo">
 					<a href="'.$racine.'">
 						<h1> Catalogue d’albums de musiques </h1>
@@ -59,9 +60,9 @@ function echoAll()
 				</div>
 			</div>
 ';
-	if(isset($_GET["p"]))
+	if(isset($_REQUEST["p"]))
 	{
-		switch($_GET["p"])
+		switch($_REQUEST["p"])
 		{
 			case "album":
 				echoAlbum();
@@ -90,7 +91,14 @@ function echoAll()
 	}
 	else
 	{
-		echoAccueil();
+		if(isset($_REQUEST["essaiLogin"]))
+		{
+			echoLogin();
+		}
+		else
+		{
+			echoAccueil();
+		}
 	}
 	echo '
 			<div id="footer">
@@ -104,6 +112,15 @@ function echoAll()
    </body>
 </html>
 ';
+}
+
+if(isset($_REQUEST["deconnecter"]))
+{
+	deconnecter();
+}
+elseif(isset($_REQUEST["essaiLogin"]))
+{
+	essaiConnexion();
 }
 
 echoAll();
