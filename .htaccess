@@ -7,12 +7,9 @@ RewriteRule ^artiste$ index.php?p=artiste
 RewriteRule ^album\/([0-9]{1,})$ index.php?p=album&idAlbum=$1
 RewriteRule ^album$ index.php?p=album
 
-RewriteRule ^recherche$ index.php?p=recherche
-RewriteRule ^recherche/_/(.*)$ index.php?p=recherche&categorie=tous&q=$1
-RewriteRule ^recherche/artiste/(.*)$ index.php?p=recherche&categorie=artiste&q=$1
-RewriteRule ^recherche/album/(.*)$ index.php?p=recherche&categorie=album&q=$1
-RewriteRule ^recherche/titre/(.*)$ index.php?p=recherche&categorie=titre&q=$1
 
+RewriteRule ^titre\/([0-9]{1,})$ index.php?p=titre&idTitre=$1
+RewriteRule ^titre$ index.php?p=titre
 
 RewriteRule ^accueil$ index.php?p=accueil
 RewriteRule ^login$ index.php?p=login
