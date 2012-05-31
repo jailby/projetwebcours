@@ -25,7 +25,7 @@ function echoRecherche()
 					<label for="q">Votre recherche : </label>
 					<input type="text" id="q" name="q" size="25" placeholder="The Beatles, I am the Walrus…" value="'.(isset($_REQUEST["q"])? $_REQUEST["q"] : "").'" />
 					<select name="categorie">
-						<option value="tous"'.isSelectedOption("tous").'>Tous</option>
+						<option value="tout"'.isSelectedOption("tout").'>Tout</option>
 						<option value="Ar"'.isSelectedOption("Ar").'>Artistes</option>
 						<option value="Al"'.isSelectedOption("Al").'>Albums</option>
 						<option value="Ti"'.isSelectedOption("Ti").'>Titres</option>
@@ -40,46 +40,95 @@ function echoRecherche()
 				<h2 class="hRecherche">Recherche</h2>';
 		switch($_REQUEST["categorie"])
 		{
-			case "tous": // Temporaire !
-			case "Ar":
-				$reqRecherche = mysql_query("SELECT * FROM artistes WHERE NomArtiste LIKE '%".$_GET["q"]."%'") or die("Erreur recherche artiste");
-				break;
+			case "Ar": // Artiste
+				rechercheArtiste();
+			break;
 			case "Al":
-				$reqRecherche = mysql_query("SELECT * FROM albums WHERE NomAlbum LIKE '%".$_GET["q"]."%'") or die("Erreur recherche album");
-				break;
+				rechercheAlbum();
+			break;
+				
 			case "Ti":
-				$reqRecherche = mysql_query("SELECT * FROM titres WHERE NomTitre LIKE '%".$_GET["q"]."%'") or die("Erreur recherche titre");
-				break;/*
-			case "tous":
-				$reqRecherche = mysql_query("SELECT * FROM artistes WHERE NomArtiste LIKE '%$_GET["q"]%'") or die("Erreur recherche artiste");
-				break;*/
+				rechercheTitre();
+			break;
+			
+			case "tout":
+				rechercheArtiste();
+				rechercheAlbum();
+				rechercheTitre();
+			break;
+			
 			default:
-				echo "Coucou.";
-				break;
+				echo "<p>Coucou ?</p>";
+			break;
 		}
-		
-		$nbResultats = mysql_num_rows($reqRecherche);
-		$strNbResultats = '';
-		switch($nbResultats)
-		{
-			case 0:
-				$strNbResultats = 'Aucun résultat obtenu.';
-				break;
-			case 1:
-				$strNbResultats = 'Un résultat obtenu.';
-				break;
-			default:
-				$strNbResultats = '' + $nbResultats + ' résultats obtenus.';
-		}
-		
-		echo '
-				<p>'.$strNbResultats.'</p>
-				<ul>';
-		while($ligneRecherche = mysql_fetch_assoc($reqRecherche))
-		{
-			echo '
-					<li><a href="artiste/'.$ligneRecherche["IdArtiste"].'">'.$ligneRecherche["NomArtiste"].'</a></li>';
-		}
-		
 	}
+}
+
+function strNbResultats($reqRecherche)
+{
+	$nbResultats = mysql_num_rows($reqRecherche);
+	$strNbResultats = '';
+	switch($nbResultats)
+	{
+		case 0:
+			$strNbResultats = 'aucun résultat obtenu.';
+			break;
+		case 1:
+			$strNbResultats = 'un résultat obtenu.';
+			break;
+		default:
+			$strNbResultats = $nbResultats . ' résultats obtenus.';
+			break;
+	}
+	return $strNbResultats;
+}
+
+function rechercheArtiste()
+{
+	$reqRecherche = mysql_query("SELECT * FROM artistes WHERE NomArtiste LIKE '%".$_GET["q"]."%'")
+		or die("Erreur recherche artiste");
+	echo '
+				<p class="pSoustitreRecherche">
+					<span class="soustitreRecherche">Recherche d’artistes :</span> '.strNbResultats($reqRecherche).'
+				</p>
+				<ul class="resultatsRecherche">';
+	while($ligneRecherche = mysql_fetch_assoc($reqRecherche))
+	{
+		echo '
+					<li><a href="artiste/'.$ligneRecherche["IdArtiste"].'">'.$ligneRecherche["NomArtiste"].'</a></li>';
+	}	
+	echo '
+				</ul>';	
+}
+
+function rechercheAlbum()
+{
+	$reqRecherche = mysql_query("SELECT * FROM albums WHERE NomAlbum LIKE '%".$_GET["q"]."%'")
+		or die("Erreur recherche album");
+	echo '
+				<p>Recherche d’albums : '.strNbResultats($reqRecherche).'</p>
+				<ul class="resultatsRecherche">';
+	while($ligneRecherche = mysql_fetch_assoc($reqRecherche))
+	{
+		echo '
+					<li><a href="album/'.$ligneRecherche["IdAlbum"].'">'.$ligneRecherche["NomAlbum"].'</a></li>';
+	}
+	echo '
+				</ul>';
+}
+
+function rechercheTitre()
+{
+	$reqRecherche = mysql_query("SELECT * FROM titres WHERE NomTitre LIKE '%".$_GET["q"]."%'")
+		or die("Erreur recherche titre");
+	echo '
+				<p>Recherche de titres : '.strNbResultats($reqRecherche).'</p>
+				<ul class="resultatsRecherche">';
+	while($ligneRecherche = mysql_fetch_assoc($reqRecherche))
+	{
+		echo '
+					<li><a href="titre/'.$ligneRecherche["IdTitre"].'">'.$ligneRecherche["NomTitre"].'</a></li>';
+	}
+	echo '
+				</ul>';
 }
