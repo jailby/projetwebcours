@@ -106,14 +106,14 @@ a:hover
 	margin: 1em 0;
 }
 
-.pseudoListe
+.pseudoListe, .pseudoTitre
 {
-	font-size: small;
+	font-size: smaller;
 }
 
 .lienTous
 {
-	font-size: small;
+	font-size: smaller;
 	display: block;
 	margin-bottom: 0.5em;
 }
