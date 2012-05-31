@@ -1,0 +1,15 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule ^artiste\/([0-9]{1,})$ index.php?p=artiste&idArtiste=$1
+RewriteRule ^artiste$ index.php?p=artiste
+
+RewriteRule ^album\/([0-9]{1,})$ index.php?p=album&idAlbum=$1
+RewriteRule ^album$ index.php?p=album
+
+RewriteRule ^accueil$ index.php?p=accueil
+RewriteRule ^login$ index.php?p=login
+RewriteRule ^recherche$ index.php?p=recherche
+RewriteRule ^mentions$ index.php?p=mentions
+RewriteRule ^licence$ index.php?p=licence
+

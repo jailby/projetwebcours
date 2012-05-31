@@ -63,11 +63,9 @@ function connecter($ligneLogin)
 {
 	$_SESSION["utilisateurNom"] = $ligneLogin["Login"];
 	$_SESSION["utilisateurId"] = $ligneLogin["IdUtilisateur"];
-	header('Location: index.php?bye');
 }
 
 function deconnecter()
 {
 	session_unset();
-	header('Location: index.php?bye');
 }
