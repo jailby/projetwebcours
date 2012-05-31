@@ -37,7 +37,9 @@ function echoAll()
 		<base href="'.$racine.'" />
 		<link type="text/css" href="style.css" rel="stylesheet" />
 		<script type="text/javascript" src="script.js"></script>
-		<title>Titre !</title>
+		<title>Catalogue d’albums de musique</title>
+		<link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 	</head>
 	<body>
 		<div id="main">
@@ -55,7 +57,7 @@ function echoAll()
 						<li><a href="artiste"'.getSelectedP("artiste").'>Artistes</a></li> <!-- &amp;idArtiste=0 -->
 						<li><a href="album"'.getSelectedP("album").'>Albums</a></li> <!-- &amp;idAlbum=0 -->
 						<li><a href="login"'.getSelectedP("login").'>Connexion</a></li>
-						<li><a href="recherche"'.getSelectedP("recherche").'>Recherche</a></li>
+						<li><a href="?p=recherche"'.getSelectedP("recherche").'>Recherche</a></li>
 					</ul>
 				</div>
 			</div>

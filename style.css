@@ -74,6 +74,7 @@ a:hover
 {
 	padding: 1em;
 	background: gray;
+	border-left: 1px solid gray;
 	color: white;
 	display: block;
 	-moz-transition-duration: 0.2s;
@@ -90,6 +91,14 @@ a:hover
 #menu li a:hover
 {
 	border-radius: 0 0 20px 0;
+}
+#menu li a:active
+{
+	color: white;
+	border-radius: 0;
+	-moz-transition-duration: 0.1s;
+	-webkit-transition-duration: 0.1s;
+	transition-duration: 0.1s;
 }
 /******************************/
 
