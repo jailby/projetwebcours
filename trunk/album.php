@@ -5,7 +5,7 @@ function echoAlbum()
 	echo '
 			<div id="contenu" class="cAlbum">';
 	
-	if(isset($_GET["idAlbum"]) and is_numeric($_GET["idAlbum"]) and $_GET["idAlbum"] > 0)
+	if(isset($_REQUEST["idAlbum"]) and is_numeric($_REQUEST["idAlbum"]) and $_REQUEST["idAlbum"] > 0)
 	{
 		$nomAlbum = "Album bidon"; // récupérer nom de l’album dans la base de données à partir de idAlbum
 	

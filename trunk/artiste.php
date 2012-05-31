@@ -21,11 +21,11 @@ function echoArtiste()
 	echo '
 			<div id="contenu" class="cArtiste">';
 	
-	if(isset($_GET["idArtiste"]) and is_numeric($_GET["idArtiste"]) and $_GET["idArtiste"] > 0)
+	if(isset($_REQUEST["idArtiste"]) and is_numeric($_REQUEST["idArtiste"]) and $_REQUEST["idArtiste"] > 0)
 	{
 		// Affichage des informations d’un artiste
 		
-		$idArtiste = $_GET["idArtiste"];
+		$idArtiste = $_REQUEST["idArtiste"];
 		
 		$reqArtiste = mysql_query("SELECT * FROM artistes WHERE IdArtiste=".$idArtiste) or die ("Erreur requête artiste");
 		$artisteSelect = mysql_fetch_assoc($reqArtiste);
@@ -34,7 +34,7 @@ function echoArtiste()
 		
 		echo '
 				<h2 id="nomArtiste">[Artiste] '.$nomArtiste.spanPseudoArtiste($pseudoArtiste, "pseudoTitre").'</h2>
-				<a class="lienTous" href="artiste">« Tous les artistes</a>';
+				<a class="lienTous" href="artiste">Tous les artistes</a>';
 		
 		// Liste des albums :
 		
@@ -47,7 +47,9 @@ function echoArtiste()
 			echo '
 						<li><a href="album/'.$ligneAlbum["IdAlbum"].'">'.$ligneAlbum["NomAlbum"].'</a></li>';
 		}
-		
+		echo '
+					</ul>';
+					
 		echo '
 			</div>';
 	}
@@ -55,7 +57,7 @@ function echoArtiste()
 	{
 		// Affichage de la liste de tous les artistes
 		
-		$reqArtistes = mysql_query("SELECT * FROM artistes") or die ("Erreur requête tous artistes");
+		$reqArtistes = mysql_query("SELECT * FROM artistes ORDER BY NomArtiste") or die ("Erreur requête tous artistes");
 		$nbArtistes = mysql_num_rows($reqArtistes);
 		echo '
 				<h2>Liste de tous les artistes enregistrés</h2>
