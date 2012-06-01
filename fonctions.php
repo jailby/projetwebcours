@@ -20,7 +20,6 @@ function echoLicence()
 	echo '
 			<div id="contenu" class="licence">
 				<p>Tout le contenu de ce site est mis à disposition sous la licence Creative Commons <a href="http://creativecommons.org/licenses/by-sa/2.0/fr/">CC-BY-SA</a> (créditer Sylvain Brunerie et Jean-Baptiste Subils).</p>
-				<p>Oui, même la musique !</p>
 			</div>';
 }
 

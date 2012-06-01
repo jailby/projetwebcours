@@ -63,7 +63,7 @@ function echoAll()
 						<li><a href="?p=recherche"'.getSelectedP("recherche").'>Recherche</a></li>
 						<li><a href="?p=panier"'.getSelectedP("panier").'>Panier</a></li>
 					</ul>
-					<input type="text" id="rechercheAutocomplete" placeholder="Entrez le début d’un nom/titre/…" />
+					<!--<input type="text" id="rechercheAutocomplete" placeholder="Entrez le début d’un nom/titre/…" />-->
 				</div>
 			</div>';
 	if(isset($_REQUEST["p"]))
