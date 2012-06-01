@@ -51,7 +51,7 @@ function echoRecherche()
 			case "tout": // Tout
 				rechercheArtiste();
 				rechercheAlbum();
-				//rechercheTitre();
+				rechercheTitre();
 			break;
 			
 			default:

@@ -3,7 +3,7 @@ function echoAccueil()
 {
 	echo '
 			<div id="contenu" class="cAccueil">
-				<p>Page d’accueil.</p>
+				<p>Bienvenu sur le site de vente de musique "Catalogue de musique".</p>
 				<!--
 				<form action="truc.php" method="get">
 					<input type="text" name="texte" value="test" />

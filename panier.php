@@ -54,21 +54,25 @@ function echoPanier()
 				
 				while ($ligneTitreAlbum = mysql_fetch_assoc($titresAlbums))
 				{
+				
 					while ($ligneTitre = mysql_fetch_assoc($idTitres))
 					{
+				
 						if ($ligneTitre["IdTitre"] == $ligneTitreAlbum["IdTitre"])
 						{
 							$p += $ligneTitre["Prix"];
 							$cpt++;
 						}
 					}
+					mysql_data_seek($idTitres,0);
 				}
 				if (mysql_num_rows($titresAlbums) == $cpt)
 				{
-					echo ' T as une reduc !!!!!!!!!!!';
+					echo '
+				<p> Vous avez eu une réduction de 10% sur cet album : '.$ligneAlbum["NomAlbum"].'</p>';
 					$prix -= $p*0.1;
 				}
-				mysql_data_seek($idTitres,0);
+				
 			}
 			echo '
 				<p> Voici les chansons dans votre panier : <p>
@@ -85,7 +89,7 @@ function echoPanier()
 			mysql_data_seek($idTitres,0);
 			while  ($ligneTitre = mysql_fetch_assoc($idTitres))
 			{
-				$prix = $prix + $ligneTitre["Prix"]; // !!!!!!!!!!!!!!!!!! à remplacer par le prix du titre
+				$prix = $prix + $ligneTitre["Prix"]; 
 				echo'
 						<tr>
 							<td><i>'.$ligneTitre["NomTitre"].'</i></td>
@@ -111,7 +115,7 @@ function echoPanier()
 	else
 	{
 		echo '
-				<h2> Il faut être connecté pour avoir un panier </h2>';
+				<p> Il faut être connecté pour avoir un panier </p>';
 	}
 	echo '
 			</div>';
