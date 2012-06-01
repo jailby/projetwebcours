@@ -34,20 +34,10 @@ function echoAlbum()
 									AND titresalbums.IdAlbum =".$idAlbum) 
 									or die ("Erreur récupération des noms des titres");
 		
-		$reqArtisteAlbum = mysql_query("SELECT * FROM artistes JOIN artistesalbums
-										ON artistes.IdArtiste = artistesalbums.IdArtiste AND IdAlbum = ".$idAlbum)
-										or die ("Erreur récupération nom artiste album");
 		
-		// Artiste(s) de l’album
-		$premierArtiste = mysql_fetch_assoc($reqArtisteAlbum);
-		$strArtistes = '<a href="artiste/'.$premierArtiste["IdArtiste"].'">'.$premierArtiste["NomArtiste"].'</a>'; // premier artiste (pas de virgule avant)
-		while($ligneArtiste = mysql_fetch_assoc($reqArtisteAlbum))
-		{
-			$strArtistes .= ', <a href="artiste/'.$ligneArtiste["IdArtiste"].'">'.$ligneArtiste["NomArtiste"].'</a>';
-		}
 		echo '
 				<h2 id="nomAlbum">Album : <i>'.$nomAlbum.'</i></h2>
-				<h3 id="nomArtistesAlbum">'.$strArtistes.'</h3>
+				<h3 id="nomArtistesAlbum">'.strArtistesAlbum($idAlbum).'</h3>
 				<a class="lienTous" href="album">Tous les albums</a>
 				<p>Liste des titres de l’album :</p>
 				<form id="formTitres" method="POST">
@@ -103,5 +93,22 @@ function echoAlbum()
 	}
 	echo '
 			</div>';
+}
+
+function strArtistesAlbum($idAlbum)
+{
+	$reqArtisteAlbum = mysql_query("SELECT * FROM artistes JOIN artistesalbums
+										ON artistes.IdArtiste = artistesalbums.IdArtiste AND IdAlbum = ".$idAlbum)
+										or die ("Erreur récupération nom artiste album");
+		
+	// Artiste(s) de l’album
+	$premierArtiste = mysql_fetch_assoc($reqArtisteAlbum);
+	$strArtistes = '<a href="artiste/'.$premierArtiste["IdArtiste"].'">'.$premierArtiste["NomArtiste"].'</a>'; // premier artiste (pas de virgule avant)
+	while($ligneArtiste = mysql_fetch_assoc($reqArtisteAlbum))
+	{
+		$strArtistes .= ', <a href="artiste/'.$ligneArtiste["IdArtiste"].'">'.$ligneArtiste["NomArtiste"].'</a>';
+	}
+	
+	return $strArtistes;
 }
 ?>
