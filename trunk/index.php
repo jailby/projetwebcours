@@ -37,7 +37,9 @@ function echoAll()
 		<meta charset="utf-8" />
 		<base href="'.$racine.'" />
 		<link type="text/css" href="style.css" rel="stylesheet" />
-		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
 		<title>Catalogue d’albums de musique</title>
 		<link rel="icon" type="image/png" href="img/favicon.png" />
         <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
@@ -61,9 +63,9 @@ function echoAll()
 						<li><a href="?p=recherche"'.getSelectedP("recherche").'>Recherche</a></li>
 						<li><a href="?p=panier"'.getSelectedP("panier").'>Panier</a></li>
 					</ul>
+					<input type="text" id="rechercheAutocomplete" placeholder="Entrez le début d’un nom/titre/…" />
 				</div>
-			</div>
-';
+			</div>';
 	if(isset($_REQUEST["p"]))
 	{
 		switch($_REQUEST["p"])
