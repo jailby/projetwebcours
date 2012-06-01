@@ -45,7 +45,7 @@ function echoAlbum()
 		while ($ligneTitre = mysql_fetch_assoc($reqNomTitres))
 		{
 			echo '
-						<li>'.($connected? '<input type="checkbox" class="checkTitre" name="c'.$ligneTitre["IdTitre"].'" />':'').'<a href="titre/'.$ligneTitre["IdTitre"].'">'.$ligneTitre["NomTitre"].'</a></li>';
+						<li>'.($connected? '<input type="checkbox" class="checkTitre" name="c'.$ligneTitre["IdTitre"].'" />':'').'<!--<a href="titre/'.$ligneTitre["IdTitre"].'">'.$ligneTitre["NomTitre"].'</a>-->'.$ligneTitre["NomTitre"].'</li>';
 		}
 		echo '		</ol>';
 		

@@ -17,7 +17,7 @@ function echoArtiste()
 		$pseudoArtiste = $artisteSelect["PseudoArtiste"];
 		
 		echo '
-				<h2 id="nomArtiste">[Artiste] '.$nomArtiste.spanPseudoArtiste($pseudoArtiste, "pseudoTitre").'</h2>
+				<h2 id="nomArtiste">Artiste : '.$nomArtiste.spanPseudoArtiste($pseudoArtiste, "pseudoTitre").'</h2>
 				<a class="lienTous" href="artiste">Tous les artistes</a>';
 		
 		// Liste des albums :
