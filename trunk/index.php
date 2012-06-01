@@ -10,6 +10,7 @@ include("login.php");
 include("artiste.php");
 include("album.php");
 include("recherche.php");
+include("panier.php");
 
 connexion();
 
@@ -58,6 +59,7 @@ function echoAll()
 						<li><a href="album"'.getSelectedP("album").'>Albums</a></li> <!-- &amp;idAlbum=0 -->
 						<li><a href="login"'.getSelectedP("login").'>Connexion</a></li>
 						<li><a href="?p=recherche"'.getSelectedP("recherche").'>Recherche</a></li>
+						<li><a href="?p=panier"'.getSelectedP("panier").'>Panier</a></li>
 					</ul>
 				</div>
 			</div>
@@ -86,6 +88,9 @@ function echoAll()
 				break;
 			case "mentions":
 				echoMentions();
+				break;
+			case "panier":
+				echoPanier();
 				break;
 			default:
 				echoErreurP();
