@@ -183,7 +183,7 @@ a:hover
 	margin-top: -0.5em;
 }
 
-#submitPanier
+#submitPanier, #supprimePanier
 {
 	font-size: smaller;
 }
@@ -197,6 +197,21 @@ a:hover
 {
 	margin-top: 0;
 	margin-bottom: 1.5em;
+}
+
+table th
+{
+	text-align: left;
+}
+
+table td
+{
+	padding-right: 10px;
+}
+
+.cPanier .cocher
+{
+	margin-top: 0;
 }
 
 /* Recherche */
