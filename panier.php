@@ -34,7 +34,7 @@ function echoPanier()
 					{
 						if ($ligneTitre["IdTitre"] == $ligneTitreAlbum["IdTitre"])
 						{
-							p +=
+							$p += 0;
 						}
 					}
 				}
