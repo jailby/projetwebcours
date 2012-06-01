@@ -46,6 +46,10 @@ a:hover
 	font-style: italic;
 }
 
+.utilisateur
+{
+	font-weight: bold;
+}
 
 /* Menu */
 
@@ -62,6 +66,14 @@ a:hover
 	margin-left: -20px;
 	margin-right: -20px;
 	overflow: auto;
+	position: relative;
+}
+
+#rechercheAutocomplete
+{
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 #menu li
@@ -100,7 +112,6 @@ a:hover
 	-webkit-transition-duration: 0.1s;
 	transition-duration: 0.1s;
 }
-/******************************/
 
 /* Footer */
 
@@ -138,7 +149,7 @@ a:hover
 {
 	font-size: smaller;
 	display: block;
-	margin-bottom: 0.5em;
+	margin-top: -1em;
 }
 
 .lienTous:before
@@ -156,7 +167,56 @@ a:hover
 	padding-right: 0.3em;
 }
 
-.utilisateur
+.checkTitre
+{
+	vertical-align: sub;
+	margin-right: 0.5em;
+}
+
+.cocher
+{
+	font-size: smaller;
+	border-width: 1px 0;
+	border-style: dotted;
+	border-color: gray;
+	padding: 0.5em 0;
+	margin-top: -0.5em;
+}
+
+#submitPanier
+{
+	font-size: smaller;
+}
+
+#nomAlbum
+{
+	margin-bottom: 0;
+}
+
+#nomArtistesAlbum
+{
+	margin-top: 0;
+	margin-bottom: 1.5em;
+}
+
+/* Recherche */
+
+.pSoustitreRecherche
+{
+	border-bottom: 1px solid gray;
+}
+
+.soustitreRecherche
 {
 	font-weight: bold;
+}
+
+.resultatsRecherche
+{
+	padding-left: 2em;
+}
+
+.resultatsRecherche li
+{
+	list-style-type: none;
 }

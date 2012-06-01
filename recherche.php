@@ -2,11 +2,7 @@
 
 function isSelectedOption($val)
 {
-	if($val == "Ar" && !isset($_REQUEST["categorie"])) // Temporaire !
-	{
-		return ' selected="selected"';
-	}
-	elseif(isset($_REQUEST["categorie"]) && $_REQUEST["categorie"] == $val)
+	if(isset($_REQUEST["categorie"]) && $_REQUEST["categorie"] == $val)
 	{
 		return ' selected="selected"';
 	}
@@ -20,6 +16,7 @@ function echoRecherche()
 {
 	echo '
 			<div id="contenu" class="cRecherche">
+				<h2 class="hRecherche">Recherche</h2>
 				<form method="REQUEST" action="">
 					<input type="hidden" name="p" value="recherche" />
 					<label for="q">Votre recherche : </label>
@@ -31,37 +28,42 @@ function echoRecherche()
 						<option value="Ti"'.isSelectedOption("Ti").'>Titres</option>
 					</select>
 					<input type="submit" value="Rechercher" />
-				</form>
-			</div>';
+				</form>';
 	
 	if(isset($_REQUEST["q"]) && isset($_REQUEST["categorie"])) // recherche à effectuer
 	{
 		echo '
-				<h2 class="hRecherche">Recherche</h2>';
+				<div class="divResultatsRecherche">';
 		switch($_REQUEST["categorie"])
 		{
 			case "Ar": // Artiste
 				rechercheArtiste();
 			break;
-			case "Al":
+			
+			case "Al": // Album
 				rechercheAlbum();
 			break;
 				
-			case "Ti":
+			case "Ti": // Titre
 				rechercheTitre();
 			break;
 			
-			case "tout":
+			case "tout": // Tout
 				rechercheArtiste();
 				rechercheAlbum();
-				rechercheTitre();
+				//rechercheTitre();
 			break;
 			
 			default:
-				echo "<p>Coucou ?</p>";
+				// echo "<p>Coucou ?</p>";
 			break;
 		}
+		
+		echo '
+				</div>';
 	}
+	echo '
+			</div>';
 }
 
 function strNbResultats($reqRecherche)
@@ -74,7 +76,7 @@ function strNbResultats($reqRecherche)
 			$strNbResultats = 'aucun résultat obtenu.';
 			break;
 		case 1:
-			$strNbResultats = 'un résultat obtenu.';
+			$strNbResultats = '1 résultat obtenu.';
 			break;
 		default:
 			$strNbResultats = $nbResultats . ' résultats obtenus.';
@@ -106,7 +108,9 @@ function rechercheAlbum()
 	$reqRecherche = mysql_query("SELECT * FROM albums WHERE NomAlbum LIKE '%".$_GET["q"]."%'")
 		or die("Erreur recherche album");
 	echo '
-				<p>Recherche d’albums : '.strNbResultats($reqRecherche).'</p>
+				<p class="pSoustitreRecherche">
+					<span class="soustitreRecherche">Recherche d’albums :</span> '.strNbResultats($reqRecherche).'
+				</p>
 				<ul class="resultatsRecherche">';
 	while($ligneRecherche = mysql_fetch_assoc($reqRecherche))
 	{
@@ -122,7 +126,9 @@ function rechercheTitre()
 	$reqRecherche = mysql_query("SELECT * FROM titres WHERE NomTitre LIKE '%".$_GET["q"]."%'")
 		or die("Erreur recherche titre");
 	echo '
-				<p>Recherche de titres : '.strNbResultats($reqRecherche).'</p>
+				<p class="pSoustitreRecherche">
+					<span class="soustitreRecherche">Recherche de titres :</span> '.strNbResultats($reqRecherche).'
+				</p>
 				<ul class="resultatsRecherche">';
 	while($ligneRecherche = mysql_fetch_assoc($reqRecherche))
 	{
